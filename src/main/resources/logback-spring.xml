@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    日志配置的根标签，有三个属性
+    scan:是否在配置文件修改时候重新加载，默认为true
+    scanPeriod:检查配置文件是否更新的周期，默认为60秒，默认单位为毫秒
+    debug:是否打印出logback内部日志信息，实时查看logback运行状态。默认值为false
+-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!--配置键值属性，可以在本xml中通过${key}使用-->
+    <property name="LOG_HOME" value="/local/logs" />
+    <property name="appName" value="log"/>
+
+    <!--
+        配置appender规则，可配置多个
+        ch.qos.logback.core.ConsoleAppender:控制台输出
+        ch.qos.logback.core.rolling.RollingFileAppender:文件输出
+        日志输出格式
+            %d:日期时间，%thread:线程名，%-5level：日志级别
+            %logger{50}:logger名字最长50个字符，否则按照句点分割, %msg:日志消息，%n:换行符
+     -->
+    <!--配置控制台输出规则-->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <!--配置日志文件输出，暂定-->
+
+    <!--配置logger根级别,只有level属性，默认为debug-->
+    <root level="info">
+        <appender-ref ref="consoleLog"/>
+    </root>
+</configuration>

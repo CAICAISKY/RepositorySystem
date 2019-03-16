@@ -80,7 +80,7 @@ create table `profit_detail`(
 	`product_name` varchar(32) not null comment '产品名称',
 	`product_no` varchar(32) not null comment '产品型号',
 	`sale_count` int not null comment '卖出件数',
-	`cost_proce` decimal not null comment '成本',
+	`cost_price` decimal not null comment '成本',
 	`sale_amount` decimal not null comment '销售金额',
 	`create_time` timestamp default current_timestamp comment '创建时间',
 	`update_time` timestamp default current_timestamp on update current_timestamp comment '更新时间',
